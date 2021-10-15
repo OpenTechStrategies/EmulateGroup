@@ -17,6 +17,12 @@ wfLoadExtension('EmulateGroup');
 Logged in users can start emulating by choosing the group from the dropdown in the left menu,
 and then clicking "Emulate."  They can stop by then clicking "Stop" in the same place.
 
+## Parameters
+
+* `$wgEmulateGroupGroupList` - The list of groups that can be emulated to.  Defaults to all
+  keys of `$wgGroupPermissions` sorted alphabetically.  If a function, will be called to
+  get the list.
+
 ## Rights
 
 * `'emulategroup'` - Accounts who have the rights to use EmulateGroup

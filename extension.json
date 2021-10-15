@@ -53,5 +53,8 @@
     "SidebarBeforeOutput": "EmulateGroup::onSidebarBeforeOutput",
     "BeforePageDisplay": "EmulateGroup::onBeforePageDisplay"
   },
+  "config": {
+    "EmulateGroupGroupList": false
+  },
   "manifest_version": 1
 }

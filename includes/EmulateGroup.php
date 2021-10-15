@@ -8,7 +8,7 @@ class EmulateGroup {
   }
 
   public static function onSidebarBeforeOutput(Skin $skin, &$bar) {
-    global $wgGroupPermissions, $wgUser;
+    global $wgGroupPermissions, $wgUser, $wgEmulateGroupGroupList;
 
     if($wgUser->isSafeToLoad()) {
       $dbw = wfGetDB(DB_MASTER);
@@ -23,8 +23,14 @@ class EmulateGroup {
       } else if($wgUser->isAllowed("emulategroup")) {
         $out  = "<div style='line-height: 1.125em; font-size: 0.75em'>";
         $out .= "<select id='emulategroupgroup' autocomplete=off name='emulate-group-select' style='width:130px;text-align:center'>";
-        $perms = array_keys($wgGroupPermissions);
-        sort($perms);
+        if(!$wgEmulateGroupGroupList) {
+          $perms = array_keys($wgGroupPermissions);
+          sort($perms);
+        } else if(is_callable($wgEmulateGroupGroupList)) {
+          $perms = call_user_func($wgEmulateGroupGroupList);
+        } else {
+          $perms = $wgEmulateGroupGroupList;
+        }
         foreach($perms as $groupName) {
           $out .= "<option value='$groupName'>$groupName</option>";
         }
