@@ -7,6 +7,6 @@
   "emulategroup": "Emulate Group",
   "emulategroup-desc": "Specialized Extension to allow users to temporarily become other groups",
   "emulategroup-start": "Emulate",
-  "emulategroup-currently": "Currently Emulating: $1",
-  "emulategroup-stop": "Stop"
+  "emulategroup-currently": "Currently Emulating:",
+  "emulategroup-stop": "Stop Emulating"
 }

@@ -15,14 +15,13 @@ class EmulateGroup {
       $resp = $dbw->select("EmulateGroupCurrentlyEmulating", ["group_name"], ["user_id" => $wgUser->getId()]);
       if($dbw->numRows($resp) > 0) {
         $currently_emulating = $resp->next()->group_name;
-        $out  = "<div style='line-height: 1.125em; font-size: 0.75em'>";
-        $out .= wfMessage("emulategroup-currently", $currently_emulating);
-        $out .= "<input id='emulategroupstop' style='width:130px' type='button' value='" . wfMessage("emulategroup-stop") . "'>";
-        $out .= "</div>";
+        $out = wfMessage("emulategroup-currently");
+        $out .= " ";
+        $out .= "<span class='currentlyemulating'>$currently_emulating</span>";
+        $out .= "<input id='emulategroupstop' type='button' value='" . wfMessage("emulategroup-stop") . "'>";
         $bar['Emulate'] = $out;
       } else if($wgUser->isAllowed("emulategroup")) {
-        $out  = "<div style='line-height: 1.125em; font-size: 0.75em'>";
-        $out .= "<select id='emulategroupgroup' autocomplete=off name='emulate-group-select' style='width:130px;text-align:center'>";
+        $out = "<select id='emulategroupgroup' autocomplete=off name='emulate-group-select'>";
         if(!$wgEmulateGroupGroupList) {
           $perms = array_keys($wgGroupPermissions);
           sort($perms);
@@ -35,8 +34,7 @@ class EmulateGroup {
           $out .= "<option value='$groupName'>$groupName</option>";
         }
         $out .= "</select>";
-        $out .= "<input id='emulategroupsubmit' style='width:130px' type='button' value='" . wfMessage("emulategroup-start") . "'>";
-        $out .= "</div>";
+        $out .= "<input id='emulategroupsubmit' type='button' value='" . wfMessage("emulategroup-start") . "'>";
         $bar['Emulate'] = $out;
       }
     }
