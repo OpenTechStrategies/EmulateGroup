@@ -6,7 +6,7 @@
   },
   "emulategroup": "Emulate Group",
   "emulategroup-desc": "Specialized Extension to allow users to temporarily become other groups",
-  "emulategroup-start": "Emulate",
+  "emulategroup-start": "Emulate Role",
   "emulategroup-currently": "Currently Emulating:",
   "emulategroup-stop": "Stop Emulating"
 }
